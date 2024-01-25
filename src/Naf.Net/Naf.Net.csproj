@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1</TargetFrameworks>
+	  <RootNamespace>NetAf.Net</RootNamespace>
+	  <Title>Naf Net</Title>
+	  <PackageProjectUrl>https://github.com/cloudfy/naf</PackageProjectUrl>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
+  </ItemGroup>
+
+</Project>
