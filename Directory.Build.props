@@ -1,0 +1,7 @@
+<Project>
+	<PropertyGroup>
+        <Company>NAF</Company>
+        <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+	</PropertyGroup>
+</Project>
