@@ -1,16 +1,23 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<RootNamespace>Naf.Filtering</RootNamespace>
 		<Title>Naf Filtering</Title>
 		<PackageId>NetAf.Filtering</PackageId>
-		<Authors>NAF</Authors>
-		<Description>Provide dynamic filtering.</Description>
+		<PackageProjectUrl>https://github.com/cloudfy/naf</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/cloudfy/naf/tree/main/src/Naf.Filtering</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<PackageReleaseNotes>First release</PackageReleaseNotes>
-		<Copyright>Copyright 2024 (c) NAF. All rights reserved.</Copyright>
 		<PackageTags>query filter</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Description>Provide dynamic filtering.</Description>
+		<PackageIcon>images\logo_black.png</PackageIcon>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<None Include="..\resources\logo_black.png" Pack="true" Visible="false" PackagePath="images\logo_black.png" />
+	</ItemGroup>
+	
 </Project>

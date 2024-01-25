@@ -3,5 +3,8 @@
         <Company>NAF</Company>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
+		<Copyright>Copyright 2024 (c) NAF. All rights reserved.</Copyright>
+		<Authors>NAF</Authors>
+
 	</PropertyGroup>
 </Project>

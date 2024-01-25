@@ -9,14 +9,6 @@ namespace Naf.Filtering;
 
 public static class FilterExpressionParser
 {
-    //internal static QueryNode Parse(string filterValue, EdmComplexType model, EdmTypeProvider typeMap)
-    //{
-    //    var parserImpl = new FilterExpressionParserImpl(model, typeMap);
-    //    var queryNode = parserImpl.Parse(new FilterExpressionLexer(filterValue));
-
-    //    return queryNode;
-    //}
-
     /// <summary>
     /// 
     /// </summary>
