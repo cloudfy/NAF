@@ -4,10 +4,15 @@
 name: .NET
 
 on:
+  workflow_dispatch:
+    inputs:
+        name:
+          description: "Name the release"
+          default: "Latest"
   #push:
   #  branches: [ "main" ]
-  pull_request:
-    branches: [ "release-*" ]
+  #pull_request:
+  #  branches: [ "release-*" ]
 
 jobs:
   build:
@@ -22,6 +27,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Hello Step
+      run: echo "Hello ${{ github.event.inputs.name }}"
+            
     - name: Get Build Version
       run: |
         Import-Module .\build\GetBuildVersion.psm1
