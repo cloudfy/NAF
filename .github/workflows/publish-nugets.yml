@@ -53,7 +53,7 @@ jobs:
  #     run: dotnet build $PROJECT --configuration $BUILD_CONFIG -p:Version=$BUILD_VERSION --no-restore
 
     - name: Build
-      run: dotnet pack $PROJECT --configuration $BUILD_CONFIG -p:PackageID=Naf.Filtering -p:PackageVersion=$BUILD_VERSION --no-restore --output nupkgs
+      run: dotnet pack $PROJECT --configuration $BUILD_CONFIG -p:PackageVersion=$BUILD_VERSION --no-restore --output nupkgs
 
   #  - name: Publish
   #    if: startsWith(github.ref, 'refs/heads/release')
