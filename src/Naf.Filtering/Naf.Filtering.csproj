@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
@@ -10,14 +10,16 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<PackageReleaseNotes>First release</PackageReleaseNotes>
-		<PackageTags>query filter</PackageTags>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageTags>query filter expression predicate</PackageTags>
 		<Description>Provide dynamic filtering.</Description>
 		<PackageIcon>images\logo_black.png</PackageIcon>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<None Include="..\resources\logo_black.png" Pack="true" Visible="false" PackagePath="images\logo_black.png" />
+		<None Include="..\LICENSE" Pack="true" Visible="false" PackagePath=""/>
 	</ItemGroup>
-	
+
 </Project>
