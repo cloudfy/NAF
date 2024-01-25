@@ -18,4 +18,18 @@ public static class Argument
 
         return value!;
     }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="message"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentNullException"></exception>
+    public static object NotNull(object? value, string message)
+    {
+        if (value is null)
+            throw new ArgumentNullException(message);
+
+        return value!;
+    }
 }
