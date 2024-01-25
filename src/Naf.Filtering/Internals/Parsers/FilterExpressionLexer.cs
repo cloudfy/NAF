@@ -1,11 +1,13 @@
-﻿namespace Naf.Filtering.Parsers;
+﻿using Naf.Filtering.Exceptions;
+
+namespace Naf.Filtering.Internals.Parsers;
 
 internal struct FilterExpressionLexer
 {
     // More restrictive expressions should be added before less restrictive expressions which could also match.
     // Also, within those bounds then order by the most common first where possible.
-    private static readonly TokenDefinition[] TokenDefinitions = new[]
-    {
+    private static readonly TokenDefinition[] _tokenDefinitions =
+    [
         new TokenDefinition(TokenType.OpenParentheses,      @"\("),
         new TokenDefinition(TokenType.CloseParentheses,     @"\)"),
         new TokenDefinition(TokenType.And,                  @"and(?=\s|$)"),
@@ -31,7 +33,7 @@ internal struct FilterExpressionLexer
         new TokenDefinition(TokenType.PropertyName,         @"[\w\/]+"),
         new TokenDefinition(TokenType.String,               @"'(?:''|[\w\s-.~!$&()*+,;=@\\\/]*)*'"),
         new TokenDefinition(TokenType.Whitespace,           @"\s", ignore: true),
-    };
+    ];
 
     private readonly string _content;
     private int _position;
@@ -39,7 +41,7 @@ internal struct FilterExpressionLexer
     internal FilterExpressionLexer(string content)
     {
         _content = content;
-        Current = default(Token);
+        Current = default;
 
         _position = _content.StartsWith("$filter=", StringComparison.Ordinal)
             ? content.IndexOf('=') + 1
@@ -55,9 +57,9 @@ internal struct FilterExpressionLexer
             return false;
         }
 
-        for (int i = 0; i < TokenDefinitions.Length; i++)
+        for (int i = 0; i < _tokenDefinitions.Length; i++)
         {
-            var tokenDefinition = TokenDefinitions[i];
+            var tokenDefinition = _tokenDefinitions[i];
 
             var match = tokenDefinition.Regex.Match(_content, _position);
 
@@ -79,7 +81,7 @@ internal struct FilterExpressionLexer
 
         if (_content.Length != _position)
         {
-            throw new Exception("Token definition cannot be found.");
+            throw new InvalidFilterException($"Invalid filter {_content}.Token definition cannot be found.");
         }
 
         return false;

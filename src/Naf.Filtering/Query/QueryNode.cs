@@ -1,4 +1,6 @@
-﻿namespace Naf.Filtering.Query.Expressions;
+﻿using Naf.Filtering.Query.Expressions;
+
+namespace Naf.Filtering.Query;
 
 /// <summary>
 /// The base class for a query node.

@@ -1,20 +1,18 @@
-﻿using Naf.Filtering;
-using Naf.Filtering.Parsers;
-using Naf.Filtering.Query.Expressions;
+﻿using Naf.Filtering.Query.Expressions;
 using System.Globalization;
 
-namespace Naf.API.Filtering.Parsers;
+namespace Naf.Filtering.Internals.Parsers;
 
 internal static class ConstantNodeParser
 {
-    private const string ODataDateFormat = "yyyy-MM-dd";
+    private const string _oDataDateFormat = "yyyy-MM-dd";
 
     internal static ConstantNode ParseConstantNode(Token token, EdmTypeProvider typeProvider)
     {
         switch (token.TokenType)
         {
             case TokenType.Date:
-                var dateTimeValue = DateTime.ParseExact(token.Value, ODataDateFormat, CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal);
+                var dateTimeValue = DateTime.ParseExact(token.Value, _oDataDateFormat, CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal);
                 return ConstantNode.Date(token.Value, dateTimeValue);
 
             case TokenType.DateTimeOffset:

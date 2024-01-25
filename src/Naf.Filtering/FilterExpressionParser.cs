@@ -1,23 +1,32 @@
-﻿using Naf.API.Filtering.Parsers;
+﻿using Naf.Filtering.Exceptions;
+using Naf.Filtering.Internals;
+using Naf.Filtering.Internals.Parsers;
 using Naf.Filtering.Model;
-using Naf.Filtering.Parsers;
+using Naf.Filtering.Query;
 using Naf.Filtering.Query.Expressions;
 
 namespace Naf.Filtering;
 
 public static class FilterExpressionParser
 {
-    internal static QueryNode Parse(string filterValue, EdmComplexType model, EdmTypeProvider typeMap)
-    {
-        var parserImpl = new FilterExpressionParserImpl(model, typeMap);
-        var queryNode = parserImpl.Parse(new FilterExpressionLexer(filterValue));
+    //internal static QueryNode Parse(string filterValue, EdmComplexType model, EdmTypeProvider typeMap)
+    //{
+    //    var parserImpl = new FilterExpressionParserImpl(model, typeMap);
+    //    var queryNode = parserImpl.Parse(new FilterExpressionLexer(filterValue));
 
-        return queryNode;
-    }
-    public static QueryNode Parse<T>(string filterValue)
-        => Parse(filterValue, typeof(T));
+    //    return queryNode;
+    //}
 
-    internal static QueryNode Parse(string filterValue, Type modelType)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="filterValue">Required. Filter to parse into query.</param>
+    /// <exception cref="InvalidFilterException"></exception>
+    /// <returns></returns>
+    public static QueryNode Parse<T>(string filterValue) => Parse(filterValue, typeof(T));
+
+    private static QueryNode Parse(string filterValue, Type modelType)
     {
         var provider = new EdmTypeProvider();
         var edmType = provider.GetByClrType(modelType) as EdmComplexType;

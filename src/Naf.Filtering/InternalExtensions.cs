@@ -1,46 +1,13 @@
 ﻿using Naf.Filtering.Exceptions;
+using Naf.Filtering.Query;
 using Naf.Filtering.Query.Expressions;
 using Naf.Filtering.Queryable;
 
 namespace Naf.Filtering;
 
-public static partial class Extensions
+public static class InternalExtensions
 {
-    /// <summary>
-    /// Filters a sequence of values based on the provided <see cref="FilterQuery"/>
-    /// </summary>
-    /// <param name="source">The queryable source</param>
-    /// <param name="filterQueryOption">The filter options to apply</param>
-    /// <returns>The filtered data source</returns>
-    /// <exception cref="ArgumentNullException">source or filter are null</exception>
-    public static IQueryable<TSource> Where<TSource>(
-        this IQueryable<TSource> source
-        , QueryNode filterQueryOption)
-    {
-        if (source == null) throw new ArgumentNullException(nameof(source));
-        
-        if (filterQueryOption is null) return source;
-
-        var parameter = Expression.Parameter(source.ElementType, "o");
-
-        var filterClause = CreateExpression(filterQueryOption, parameter);
-
-        var lambda = Expression.Lambda<Func<TSource, bool>>(filterClause, parameter);
-
-        return source.Where(lambda);
-    }
-    public static Expression<Func<TSource, bool>> GetWhere<TSource>(QueryNode filterQueryOption)
-    {
-        if (filterQueryOption == null) throw new ArgumentNullException(nameof(filterQueryOption));
-
-        var parameter = Expression.Parameter(typeof(TSource), typeof(TSource).Name);
-
-        var filterClause = CreateExpression(filterQueryOption, parameter);
-
-        return Expression.Lambda<Func<TSource, bool>>(filterClause, parameter);
-    }
-
-    private static Expression CreateExpression(QueryNode queryNode, Expression baseExpression)
+    internal static Expression CreateExpression(QueryNode queryNode, Expression baseExpression)
     {
         return queryNode switch
         {
@@ -204,7 +171,7 @@ public static partial class Extensions
 
                     return result;
                 }
-                else if (arguments[0].Type == StringType)
+                else if (arguments[0].Type == _stringType)
                 {
                     return Expression.Call(null, Methods.StringConcat,
                         Expression.NewArrayInit(typeof(object), arguments));
@@ -217,7 +184,7 @@ public static partial class Extensions
             case "contains":
                 ValidateParameterCount(2);
 
-                if (arguments[0].Type == StringType)
+                if (arguments[0].Type == _stringType)
                 {
                     return Expression.Call(arguments[0], Methods.StringContains, arguments[1]);
                 }
@@ -281,7 +248,7 @@ public static partial class Extensions
             case "length":
                 ValidateParameterCount(1);
 
-                if (arguments[0].Type == StringType)
+                if (arguments[0].Type == _stringType)
                 {
                     return Expression.MakeMemberAccess(arguments[0], Methods.StringLength);
                 }
@@ -301,7 +268,7 @@ public static partial class Extensions
             case "substring":
                 ValidateParameterCount(2, 3);
 
-                if (arguments[0].Type == StringType)
+                if (arguments[0].Type == _stringType)
                 {
                     if (arguments.Count == 2)
                     {
@@ -338,7 +305,7 @@ public static partial class Extensions
             case "tolower":
                 ValidateParameterCount(1);
 
-                if (arguments[0].Type == StringType)
+                if (arguments[0].Type == _stringType)
                 {
                     return Expression.Call(arguments[0], Methods.StringToLowerInvariant);
                 }
@@ -349,7 +316,7 @@ public static partial class Extensions
             case "toupper":
                 ValidateParameterCount(1);
 
-                if (arguments[0].Type == StringType)
+                if (arguments[0].Type == _stringType)
                 {
                     return Expression.Call(arguments[0], Methods.StringToUpperInvariant);
                 }
@@ -360,7 +327,7 @@ public static partial class Extensions
             case "trim":
                 ValidateParameterCount(1);
 
-                if (arguments[0].Type == StringType)
+                if (arguments[0].Type == _stringType)
                 {
                     return Expression.Call(arguments[0], Methods.StringTrim);
                 }
@@ -373,11 +340,11 @@ public static partial class Extensions
             case "date":
                 ValidateParameterCount(1);
 
-                if (arguments[0].Type == DateTimeType)
+                if (arguments[0].Type == _dateTimeType)
                 {
                     return Expression.MakeMemberAccess(arguments[0], Methods.DateTimeDate);
                 }
-                else if (arguments[0].Type == DateTimeOffsetType)
+                else if (arguments[0].Type == _dateTimeOffsetType)
                 {
                     return Expression.MakeMemberAccess(arguments[0], Methods.DateTimeOffsetDate);
                 }
@@ -389,11 +356,11 @@ public static partial class Extensions
             case "time":
                 ValidateParameterCount(1);
 
-                if (arguments[0].Type == DateTimeType)
+                if (arguments[0].Type == _dateTimeType)
                 {
                     return Expression.MakeMemberAccess(arguments[0], Methods.DateTimeTime);
                 }
-                else if (arguments[0].Type == DateTimeOffsetType)
+                else if (arguments[0].Type == _dateTimeOffsetType)
                 {
                     return Expression.MakeMemberAccess(arguments[0], Methods.DateTimeOffsetTime);
                 }
@@ -405,7 +372,7 @@ public static partial class Extensions
             case "totaloffsetminutes":
                 ValidateParameterCount(1);
 
-                if (arguments[0].Type == DateTimeOffsetType)
+                if (arguments[0].Type == _dateTimeOffsetType)
                 {
                     return Expression.MakeMemberAccess(
                         Expression.MakeMemberAccess(arguments[0], Methods.DateTimeOffsetOffset),
@@ -419,11 +386,11 @@ public static partial class Extensions
             case "day":
                 ValidateParameterCount(1);
 
-                if (arguments[0].Type == DateTimeType)
+                if (arguments[0].Type == _dateTimeType)
                 {
                     return Expression.MakeMemberAccess(arguments[0], Methods.DateTimeDay);
                 }
-                else if (arguments[0].Type == DateTimeOffsetType)
+                else if (arguments[0].Type == _dateTimeOffsetType)
                 {
                     return Expression.MakeMemberAccess(arguments[0], Methods.DateTimeOffsetDay);
                 }
@@ -435,11 +402,11 @@ public static partial class Extensions
             case "month":
                 ValidateParameterCount(1);
 
-                if (arguments[0].Type == DateTimeType)
+                if (arguments[0].Type == _dateTimeType)
                 {
                     return Expression.MakeMemberAccess(arguments[0], Methods.DateTimeMonth);
                 }
-                else if (arguments[0].Type == DateTimeOffsetType)
+                else if (arguments[0].Type == _dateTimeOffsetType)
                 {
                     return Expression.MakeMemberAccess(arguments[0], Methods.DateTimeOffsetMonth);
                 }
@@ -451,11 +418,11 @@ public static partial class Extensions
             case "year":
                 ValidateParameterCount(1);
 
-                if (arguments[0].Type == DateTimeType)
+                if (arguments[0].Type == _dateTimeType)
                 {
                     return Expression.MakeMemberAccess(arguments[0], Methods.DateTimeYear);
                 }
-                else if (arguments[0].Type == DateTimeOffsetType)
+                else if (arguments[0].Type == _dateTimeOffsetType)
                 {
                     return Expression.MakeMemberAccess(arguments[0], Methods.DateTimeOffsetYear);
                 }
@@ -467,11 +434,11 @@ public static partial class Extensions
             case "hour":
                 ValidateParameterCount(1);
 
-                if (arguments[0].Type == DateTimeType)
+                if (arguments[0].Type == _dateTimeType)
                 {
                     return Expression.MakeMemberAccess(arguments[0], Methods.DateTimeHour);
                 }
-                else if (arguments[0].Type == DateTimeOffsetType)
+                else if (arguments[0].Type == _dateTimeOffsetType)
                 {
                     return Expression.MakeMemberAccess(arguments[0], Methods.DateTimeOffsetHour);
                 }
@@ -483,11 +450,11 @@ public static partial class Extensions
             case "minute":
                 ValidateParameterCount(1);
 
-                if (arguments[0].Type == DateTimeType)
+                if (arguments[0].Type == _dateTimeType)
                 {
                     return Expression.MakeMemberAccess(arguments[0], Methods.DateTimeMinute);
                 }
-                else if (arguments[0].Type == DateTimeOffsetType)
+                else if (arguments[0].Type == _dateTimeOffsetType)
                 {
                     return Expression.MakeMemberAccess(arguments[0], Methods.DateTimeOffsetMinute);
                 }
@@ -499,11 +466,11 @@ public static partial class Extensions
             case "second":
                 ValidateParameterCount(1);
 
-                if (arguments[0].Type == DateTimeType)
+                if (arguments[0].Type == _dateTimeType)
                 {
                     return Expression.MakeMemberAccess(arguments[0], Methods.DateTimeSecond);
                 }
-                else if (arguments[0].Type == DateTimeOffsetType)
+                else if (arguments[0].Type == _dateTimeOffsetType)
                 {
                     return Expression.MakeMemberAccess(arguments[0], Methods.DateTimeOffsetSecond);
                 }
@@ -515,11 +482,11 @@ public static partial class Extensions
             case "fractionalseconds":
                 ValidateParameterCount(1);
 
-                if (arguments[0].Type == DateTimeType)
+                if (arguments[0].Type == _dateTimeType)
                 {
                     return Expression.MakeMemberAccess(arguments[0], Methods.DateTimeMilliseconds);
                 }
-                else if (arguments[0].Type == DateTimeOffsetType)
+                else if (arguments[0].Type == _dateTimeOffsetType)
                 {
                     return Expression.MakeMemberAccess(arguments[0], Methods.DateTimeOffsetMilliseconds);
                 }
@@ -544,25 +511,25 @@ public static partial class Extensions
             case "ceiling":
                 ValidateParameterCount(1);
 
-                var ceilArg = arguments[0].Type == DoubleType
+                var ceilArg = arguments[0].Type == _doubleType
                     ? arguments[0]
-                    : Expression.Convert(arguments[0], DoubleType);
+                    : Expression.Convert(arguments[0], _doubleType);
                 return Expression.Call(null, Methods.MathCeiling, ceilArg);
 
             case "floor":
                 ValidateParameterCount(1);
 
-                var floorArg = arguments[0].Type == DoubleType
+                var floorArg = arguments[0].Type == _doubleType
                     ? arguments[0]
-                    : Expression.Convert(arguments[0], DoubleType);
+                    : Expression.Convert(arguments[0], _doubleType);
                 return Expression.Call(null, Methods.MathFloor, floorArg);
 
             case "round":
                 ValidateParameterCount(1);
 
-                var roundArg = arguments[0].Type == DoubleType
+                var roundArg = arguments[0].Type == _doubleType
                     ? arguments[0]
-                    : Expression.Convert(arguments[0], DoubleType);
+                    : Expression.Convert(arguments[0], _doubleType);
                 return Expression.Call(null, Methods.MathRound, roundArg);
 
             // type functions
@@ -634,7 +601,7 @@ public static partial class Extensions
 
     private static Expression CreateCastExpression(Expression argument, Type targetType)
     {
-        if (targetType == StringType)
+        if (targetType == _stringType)
         {
             return Expression.Call(argument, Methods.ObjectToString);
         }
@@ -654,10 +621,10 @@ public static partial class Extensions
         {
             "Boolean" => typeof(bool),
             "Byte" => typeof(byte),
-            "Date" => DateTimeType,
-            "DateTimeOffset" => DateTimeOffsetType,
+            "Date" => _dateTimeType,
+            "DateTimeOffset" => _dateTimeOffsetType,
             "Decimal" => typeof(decimal),
-            "Double" => DoubleType,
+            "Double" => _doubleType,
             "Duration" => typeof(TimeSpan),
             "Guid" => typeof(Guid),
             "Int16" => typeof(short),
@@ -665,14 +632,14 @@ public static partial class Extensions
             "Int64" => typeof(long),
             "SByte" => typeof(sbyte),
             "Single" => typeof(float),
-            "String" => StringType,
+            "String" => _stringType,
             "TimeOfDay" => typeof(TimeSpan),
             _ => null
         };
     }
 
-    private static readonly Type StringType = typeof(string);
-    private static readonly Type DoubleType = typeof(double);
-    private static readonly Type DateTimeOffsetType = typeof(DateTimeOffset);
-    private static readonly Type DateTimeType = typeof(DateTime);
+    private static readonly Type _stringType = typeof(string);
+    private static readonly Type _doubleType = typeof(double);
+    private static readonly Type _dateTimeOffsetType = typeof(DateTimeOffset);
+    private static readonly Type _dateTimeType = typeof(DateTime);
 }

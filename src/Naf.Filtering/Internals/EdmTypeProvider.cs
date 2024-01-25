@@ -2,11 +2,11 @@
 using System.Collections.Concurrent;
 using System.Reflection;
 
-namespace Naf.Filtering;
+namespace Naf.Filtering.Internals;
 
 internal class EdmTypeProvider
 {
-    private static readonly Dictionary<Type, EdmType> PrimitiveTypes = new()
+    private static readonly Dictionary<Type, EdmType> _primitiveTypes = new()
     {
         [typeof(byte[])] = EdmPrimitiveType.Binary,
         [typeof(bool)] = EdmPrimitiveType.Boolean,
@@ -40,10 +40,10 @@ internal class EdmTypeProvider
         [typeof(string)] = EdmPrimitiveType.String
     };
 
-    private readonly ConcurrentDictionary<Type, EdmType> _mapByType = new(PrimitiveTypes);
+    private readonly ConcurrentDictionary<Type, EdmType> _mapByType = new(_primitiveTypes);
 
     private readonly ConcurrentDictionary<string, EdmType> _mapByName =
-        new(PrimitiveTypes.Values.GroupBy(v => v.FullName).ToDictionary(g => g.Key, g => g.First()));
+        new(_primitiveTypes.Values.GroupBy(v => v.FullName).ToDictionary(g => g.Key, g => g.First()));
 
     public EdmType GetByClrType(Type type)
     {

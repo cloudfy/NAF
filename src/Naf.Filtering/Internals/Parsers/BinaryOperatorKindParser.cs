@@ -1,10 +1,11 @@
-﻿using Naf.Filtering.Query.Expressions;
+﻿using Naf.Filtering.Exceptions;
+using Naf.Filtering.Query.Expressions;
 
-namespace Naf.Filtering.Parsers;
+namespace Naf.Filtering.Internals.Parsers;
 
 internal static class BinaryOperatorKindParser
 {
-    private static readonly Dictionary<string, BinaryOperatorKind> OperatorTypeMap = new()
+    private static readonly Dictionary<string, BinaryOperatorKind> _operatorTypeMap = new()
     {
         ["add"] = BinaryOperatorKind.Add,
         ["and"] = BinaryOperatorKind.And,
@@ -25,7 +26,7 @@ internal static class BinaryOperatorKindParser
 
     internal static BinaryOperatorKind ToBinaryOperatorKind(this string operatorType)
     {
-        if (OperatorTypeMap.TryGetValue(operatorType, out var binaryOperatorKind))
+        if (_operatorTypeMap.TryGetValue(operatorType, out var binaryOperatorKind))
         {
             return binaryOperatorKind;
         }

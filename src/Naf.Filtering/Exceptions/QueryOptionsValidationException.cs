@@ -1,8 +1,7 @@
 ﻿namespace Naf.Filtering.Exceptions;
 
-public class QueryOptionsValidationException : Exception
+public class QueryOptionsValidationException : FilteringException
 {
-    public QueryOptionsValidationException(string? message) : base(message)
-    {
-    }
+    internal QueryOptionsValidationException(string? message) : base(message)
+    { }
 }

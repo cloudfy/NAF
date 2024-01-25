@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Naf.Filtering.Parsers;
+namespace Naf.Filtering.Internals.Parsers;
 
 [System.Diagnostics.DebuggerDisplay("{_tokenType}: {Regex}")]
 internal readonly struct TokenDefinition

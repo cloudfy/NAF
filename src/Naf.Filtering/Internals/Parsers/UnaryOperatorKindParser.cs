@@ -1,7 +1,7 @@
-﻿using Naf.Filtering.Parsers;
+﻿using Naf.Filtering.Exceptions;
 using Naf.Filtering.Query.Expressions;
 
-namespace Naf.Filtering.Parsers;
+namespace Naf.Filtering.Internals.Parsers;
 
 internal static class UnaryOperatorKindParser
 {

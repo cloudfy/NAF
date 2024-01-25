@@ -1,7 +1,7 @@
-﻿namespace Naf.Filtering.Parsers;
+﻿namespace Naf.Filtering.Internals.Parsers;
 
 [System.Diagnostics.DebuggerDisplay("{TokenType}: {Value}")]
-internal struct Token
+internal readonly struct Token
 {
     internal Token(string value, TokenType tokenType)
     {
