@@ -4,7 +4,7 @@
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<RootNamespace>Naf.Filtering</RootNamespace>
 		<Title>Naf Filtering</Title>
-		<PackageId>Naf.Filtering</PackageId>
+		<PackageId>NetAf.Filtering</PackageId>
 		<Authors>NAF</Authors>
 		<Description>Provide dynamic filtering.</Description>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
