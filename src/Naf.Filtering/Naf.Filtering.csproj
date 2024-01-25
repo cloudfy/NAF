@@ -12,10 +12,12 @@
 		<PackageReleaseNotes>First release</PackageReleaseNotes>
 		<PackageTags>query filter</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Authors>NAF</Authors>
 		<Description>Provide dynamic filtering.</Description>
-		<Copyright>Copyright 2024 (c) NAF. All rights reserved.</Copyright>
-		<PackageIconUrl></PackageIconUrl>
+		<PackageIcon>images\logo_black.png</PackageIcon>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<None Include="..\resources\logo_black.png" Pack="true" Visible="false" PackagePath="images\logo_black.png" />
+	</ItemGroup>
+	
 </Project>
