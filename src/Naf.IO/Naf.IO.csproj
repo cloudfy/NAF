@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;net50</TargetFrameworks>
+    <PackageId>RuntimeIO</PackageId>
+  </PropertyGroup>
+
+	<Target Name="PostPackNugetDeploy" AfterTargets="Pack" Condition="'$(Configuration)' == 'Release'">
+		<Exec Command="d:\Tools\Nuget\NuGet.exe push &quot;bin\release\$(PackageId).$(PackageVersion).nupkg&quot; -src https://www.nuget.org/api/v2/package" />
+	</Target>
+
+	<ItemGroup>
+	  <PackageReference Include="RuntimeCore" Version="1.0.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Naf.Core\Naf.Core.csproj" />
+	</ItemGroup>
+
+</Project>
