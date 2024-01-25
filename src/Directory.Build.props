@@ -1,0 +1,5 @@
+<Project>
+    <Company>NAF</Company>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>	
+</Project>
