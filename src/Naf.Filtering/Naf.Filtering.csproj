@@ -13,7 +13,6 @@
 		<PackageTags>query filter expression predicate</PackageTags>
 		<Description>Provide dynamic filtering.</Description>
 		<PackageIcon>images\logo_black.png</PackageIcon>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	</PropertyGroup>
 
