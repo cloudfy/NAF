@@ -14,7 +14,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naf.Net", "src\Naf.Net\Naf.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naf.IO", "src\Naf.IO\Naf.IO.csproj", "{5B535680-50BE-461F-B278-9B114FE09E77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naf.Core", "src\Naf.Core\Naf.Core.csproj", "{C9DD5D6C-463C-48A4-B538-2724086FCBD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naf.Core", "src\Naf.Core\Naf.Core.csproj", "{C9DD5D6C-463C-48A4-B538-2724086FCBD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naf.ResultObjects", "src\Naf.ResultObjects\Naf.ResultObjects.csproj", "{C9C458F3-4E5E-4C52-A159-1C1AE9A4DA14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{C9DD5D6C-463C-48A4-B538-2724086FCBD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9DD5D6C-463C-48A4-B538-2724086FCBD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9DD5D6C-463C-48A4-B538-2724086FCBD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9C458F3-4E5E-4C52-A159-1C1AE9A4DA14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9C458F3-4E5E-4C52-A159-1C1AE9A4DA14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9C458F3-4E5E-4C52-A159-1C1AE9A4DA14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9C458F3-4E5E-4C52-A159-1C1AE9A4DA14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

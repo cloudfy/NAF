@@ -4,6 +4,13 @@ namespace Naf;
 
 public static class Argument
 {
+    public static Guid NotNullOrEmpty(Guid? value, string message)
+    {
+        if (value is null || value.Value == Guid.Empty)
+            throw new ArgumentException(message);
+
+        return value.Value;
+    }
     /// <summary>
     /// Defines that the <paramref name="value"/> is required.
     /// </summary>
