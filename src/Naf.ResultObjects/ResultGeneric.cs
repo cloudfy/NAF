@@ -7,5 +7,8 @@ public class Result<T> : Result
     internal Result(bool isSuccess, T result)
         : base(isSuccess) => _result = result;
 
+    /// <summary>
+    /// Gets the result value.
+    /// </summary>
     public T Value => _result;
 }

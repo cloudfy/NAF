@@ -14,11 +14,13 @@
 		<Description>Provide dynamic filtering.</Description>
 		<PackageIcon>images\logo_black.png</PackageIcon>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<None Include="..\..\resources\logo_black.png" Pack="true" Visible="false" PackagePath="images\logo_black.png" />
 		<None Include="..\..\LICENSE" Pack="true" Visible="false" PackagePath=""/>
+		<None Include="..\..\docs\readme-nuget.md" Pack="true" Visible="false" PackagePath="README.md"/>
 	</ItemGroup>
 
 </Project>
