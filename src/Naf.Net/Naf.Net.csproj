@@ -1,20 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.1</TargetFrameworks>
-	  <RootNamespace>NetAf.Net</RootNamespace>
-	  <Title>Naf Net</Title>
-	  <PackageProjectUrl>https://github.com/cloudfy/naf</PackageProjectUrl>
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.1</TargetFrameworks>
+		<RootNamespace>NetAf.Net</RootNamespace>
+		<Title>Naf Net</Title>
+		<PackageProjectUrl>https://github.com/cloudfy/naf</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/cloudfy/naf</PackageProjectUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<PackageReleaseNotes>First release</PackageReleaseNotes>
+		<PackageTags>json oauth</PackageTags>
+		<Description>Provide web handling.</Description>
+		<PackageIcon>images\logo_black.png</PackageIcon>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	</PropertyGroup>
 
-  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="OAuth\" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\..\resources\logo_black.png" Pack="true" Visible="false" PackagePath="images\logo_black.png" />
+		<None Include="..\..\LICENSE" Pack="true" Visible="false" PackagePath=""/>
+	</ItemGroup>
 
 </Project>

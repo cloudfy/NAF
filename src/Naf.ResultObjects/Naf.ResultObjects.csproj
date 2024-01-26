@@ -1,8 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+
+		<RootNamespace>Naf.ResultObjects</RootNamespace>
+		<Title>Naf ResultObjects</Title>
+		<PackageId>NetAf.ResultObjects</PackageId>
+		<PackageProjectUrl>https://github.com/cloudfy/naf</PackageProjectUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<PackageReleaseNotes>First release</PackageReleaseNotes>
+		<PackageTags>result objects</PackageTags>
+		<Description>Provide result objects.</Description>
+		<PackageIcon>images\logo_black.png</PackageIcon>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+		<None Include="..\..\resources\logo_black.png" Pack="true" Visible="false" PackagePath="images\logo_black.png" />
+		<None Include="..\..\LICENSE" Pack="true" Visible="false" PackagePath=""/>
+	</ItemGroup>
 
 </Project>

@@ -1,5 +1,4 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+# Build nugets and publish them to nuget.org
 
 name: Publish nugets
 
@@ -9,10 +8,6 @@ on:
         name:
           description: "Name the release"
           default: "Latest"
-  #push:
-  #  branches: [ "main" ]
-  #pull_request:
-  #  branches: [ "release-*" ]
 
 jobs:
   build:
@@ -23,7 +18,7 @@ jobs:
       PROJECT: 'src/Naf.Filtering/Naf.Filtering.csproj'
 
     runs-on: ubuntu-latest
-
+    
     steps:
     - uses: actions/checkout@v3
 
@@ -53,7 +48,7 @@ jobs:
  #     run: dotnet build $PROJECT --configuration $BUILD_CONFIG -p:Version=$BUILD_VERSION --no-restore
 
     - name: Build
-      run: dotnet pack $PROJECT --configuration $BUILD_CONFIG -p:PackageVersion=$BUILD_VERSION --no-restore --output nupkgs
+      run: dotnet pack $SOLUTION --configuration $BUILD_CONFIG -p:PackageVersion=$BUILD_VERSION --no-restore --output nupkgs
 
   #  - name: Publish
   #    if: startsWith(github.ref, 'refs/heads/release')
