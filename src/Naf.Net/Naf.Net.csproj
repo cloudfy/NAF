@@ -4,6 +4,7 @@
 		<TargetFrameworks>netstandard2.1</TargetFrameworks>
 		<RootNamespace>NetAf.Net</RootNamespace>
 		<Title>Naf Net</Title>
+		<PackageId>NetAf.Net</PackageId>
 		<PackageProjectUrl>https://github.com/cloudfy/naf</PackageProjectUrl>
 		<PackageProjectUrl>https://github.com/cloudfy/naf</PackageProjectUrl>
 		<RepositoryType>git</RepositoryType>
