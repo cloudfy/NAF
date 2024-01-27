@@ -2,20 +2,16 @@
 
 namespace Naf.Net.Tokens;
 
-public class OAuth2Token(
-    string accessToken
-        , string? refreshToken = null
-        , int? expiresIn = null
-        , string? tokenType = null
-        , string? scope = null) : IAuthToken
+public class OAuth2Token : IAuthToken
 {
     [JsonProperty("refresh_token")]
-    public string? RefreshToken { get; set; } = refreshToken;
+    public string? RefreshToken { get; set; }
     [JsonProperty("access_token")]
-    public string AccessToken { get; set; } = accessToken;
+    public string? AccessToken { get; set; }
     [JsonProperty("expires_in")]
-    public int? ExpiresIn { get; set; } = expiresIn;
+    public int? ExpiresIn { get; set; }
     [JsonProperty("token_type")]
-    public string? TokenType { get; set; } = tokenType;
-    public string? Scope { get; set; } = scope;
+    public string? TokenType { get; set; }
+    [JsonProperty("scope")]
+    public string? Scope { get; set; }
 }
