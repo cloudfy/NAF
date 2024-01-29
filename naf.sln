@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Naf.Core", "src\Naf.Core\Na
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naf.ResultObjects", "src\Naf.ResultObjects\Naf.ResultObjects.csproj", "{C9C458F3-4E5E-4C52-A159-1C1AE9A4DA14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naf.AspNetCore.Mvc", "src\Naf.Mvc\Naf.AspNetCore.Mvc.csproj", "{7741AE92-4ECD-4B8F-9038-A9297FF715D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{C9C458F3-4E5E-4C52-A159-1C1AE9A4DA14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9C458F3-4E5E-4C52-A159-1C1AE9A4DA14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9C458F3-4E5E-4C52-A159-1C1AE9A4DA14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7741AE92-4ECD-4B8F-9038-A9297FF715D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7741AE92-4ECD-4B8F-9038-A9297FF715D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7741AE92-4ECD-4B8F-9038-A9297FF715D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7741AE92-4ECD-4B8F-9038-A9297FF715D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
