@@ -1,7 +1,12 @@
-﻿namespace Naf.AspNetCore.Mvc.Paging;
+﻿using Naf.AspNetCore.Mvc.Paging.Abstracts;
 
+namespace Naf.AspNetCore.Mvc.Paging;
 
-public class OffsetPagedResult<T> : PagedResult<T>
+/// <summary>
+/// 
+/// </summary>
+/// <typeparam name="T">Type of collection to return.</typeparam>
+public sealed class OffsetPagedResult<T> : PagedResult<T>
 {
     internal OffsetPagedResult(
         T[] results
