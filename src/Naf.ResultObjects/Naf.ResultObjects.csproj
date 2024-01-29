@@ -16,7 +16,6 @@
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	</PropertyGroup>
 
-
 	<ItemGroup>
 		<None Include="..\..\resources\logo_black.png" Pack="true" Visible="false" PackagePath="images\logo_black.png" />
 		<None Include="..\..\LICENSE" Pack="true" Visible="false" PackagePath=""/>

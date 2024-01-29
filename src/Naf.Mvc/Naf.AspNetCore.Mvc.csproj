@@ -1,8 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-	  <OutputType>Library</OutputType>
-	<RootNamespace>Naf.AspNetCore</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<OutputType>Library</OutputType>
+		<RootNamespace>Naf.AspNetCore</RootNamespace>
+
+		<Title>Naf Mvc</Title>
+		<PackageId>NetAf.Mvc</PackageId>
+		<PackageProjectUrl>https://github.com/cloudfy/naf</PackageProjectUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<PackageReleaseNotes>First release</PackageReleaseNotes>
+		<PackageTags>Mvc paging</PackageTags>
+		<Description>Provide paging.</Description>
+		<PackageIcon>images\logo_black.png</PackageIcon>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\resources\logo_black.png" Pack="true" Visible="false" PackagePath="images\logo_black.png" />
+		<None Include="..\..\LICENSE" Pack="true" Visible="false" PackagePath=""/>
+	</ItemGroup>
 
 </Project>

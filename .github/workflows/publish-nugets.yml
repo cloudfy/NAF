@@ -15,7 +15,6 @@ jobs:
     env:
       BUILD_CONFIG: 'Release'
       SOLUTION: 'naf.sln'
-      PROJECT: 'src/Naf.Filtering/Naf.Filtering.csproj'
 
     runs-on: ubuntu-latest
     
@@ -44,18 +43,8 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
 
- #   - name: Build
- #     run: dotnet build $PROJECT --configuration $BUILD_CONFIG -p:Version=$BUILD_VERSION --no-restore
-
     - name: Build
       run: dotnet pack $SOLUTION --configuration $BUILD_CONFIG -p:PackageVersion=$BUILD_VERSION --no-restore --output nupkgs
-
-  #  - name: Publish
-  #    if: startsWith(github.ref, 'refs/heads/release')
-  #    run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
-
-# /home/runner/work/naf/naf/src/Naf.Filtering/bin/Release/Naf.Filtering.1.0.0-build.nupkg
-#--output nupkgs    
 
     - name: Publish the package to nuget.org
       run: dotnet nuget push **\*.nupkg -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
